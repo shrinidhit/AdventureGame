@@ -75,7 +75,7 @@ def create_world ():
 
     Player('Blubbering-Fool', oval)
 
-    myRadar = Radar('handy radar',mh353)
+    Radar('handy radar',mh353)
     Thing('blackboard', ac113)
     Thing('lovely-trees', oval)
     Thing('n64',wh3)
