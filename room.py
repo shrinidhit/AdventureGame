@@ -6,11 +6,15 @@ class Room (WObject): #,Container):
 
     rooms = []
 
-    def __init__ (self,name):
+    def __init__ (self,name,desc):
         WObject.__init__(self,name)
         self._exits = {}
         self._contents = []
+        self._desc = desc
         Room.rooms.append(self)
+        
+    def desc (self):
+        return self._desc
 
     def exits (self):
         return self._exits

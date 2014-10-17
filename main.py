@@ -36,23 +36,23 @@ def biconnect (fr,dir,to):
 
 def create_world ():
 
-    mh353 = Room('Riccardo Office')
-    mh3rd = Room('Milas Hall Third Floor')
-    mh2nd = Room('Milas Hall Second Floor')
-    mh1st = Room('Milas Hall First Floor')
-    oval = Room('Oval')
-    ac1st = Room('Academic Center First Floor')
-    ac113 = Room('Academic Center 113')
-    cc1st = Room('Campus Center First Floor')
-    wh1 = Room('West Hall First Floor')
-    wh2 = Room('West Hall Second Floor')
-    wh3 = Room('West Hall Third Floor')
-    wh4 = Room('West Hall Fourth Floor')
-    eh1 = Room('East Hall First Floor')
-    eh2 = Room('East Hall Second Floor')
-    eh3 = Room('East Hall Third Floor')
-    eh4 = Room('East Hall Fourth Floor')
-    babson = Room('Babson College')
+    mh353 = Room('Riccardo Office','Where Riccardo works.')
+    mh3rd = Room('Milas Hall Third Floor','3rd Floor of Milas Hall')
+    mh2nd = Room('Milas Hall Second Floor','2nd Floor of Milas Hall')
+    mh1st = Room('Milas Hall First Floor','1st Floor of Milas Hall')
+    oval = Room('Oval','Quite round in appearance.')
+    ac1st = Room('Academic Center First Floor','Ah, the sweet smell of knowledge.')
+    ac113 = Room('Academic Center 113','Home of GPro')
+    cc1st = Room('Campus Center First Floor','Dat food though.')
+    wh1 = Room('West Hall First Floor','1st Floor of West Hall')
+    wh2 = Room('West Hall Second Floor','2nd Floor of West Hall')
+    wh3 = Room('West Hall Third Floor','3rd Floor of West Hall')
+    wh4 = Room('West Hall Fourth Floor','4th Floor of West Hall')
+    eh1 = Room('East Hall First Floor','1st Floor of East Hall')
+    eh2 = Room('East Hall Second Floor','2nd Floor of East Hall')
+    eh3 = Room('East Hall Third Floor','3rd Floor of East Hall')
+    eh4 = Room('East Hall Fourth Floor','4th Floor of East Hall')
+    babson = Room('Babson College','BABBIES')
 
     biconnect(mh353, 'east',  mh3rd)
     biconnect(mh3rd, 'down',  mh2nd)
@@ -73,24 +73,23 @@ def create_world ():
 
     # The player is the first 'thing' that has to be created
 
-    Player('Blubbering-Fool', oval)
+    Player('Blubbering-Fool', oval, "That's you!")
 
-    Radar('handy radar',mh353)
-    Thing('blackboard', ac113)
-    Thing('lovely-trees', oval)
-    Thing('n64',wh3)
-    Thing('rock-band',wh4)
-    MobileThing('cs-book', oval)
-    MobileThing('math-book', oval)
-    MobileThing('backpack',wh1)
-    MobileThing('lunch',cc1st)
-    MobileThing('knowledge',ac113)
+    Radar('handy radar',mh353,'So very handy.') 
+    Thing('blackboard', ac113,'You can write on it.')
+    Thing('lovely-trees', oval,'So very pretty.')
+    Thing('n64',wh3,'Such games.')
+    Thing('rock-band',wh4,'Jammin.')
+    MobileThing('cs-book', oval,'Learning that CS.')
+    MobileThing('math-book', oval,'Learning them maths.')
+    MobileThing('backpack',wh1,'To hold all the things.')
+    MobileThing('lunch',cc1st,'Yummy in your tummy.')
+    MobileThing('knowledge',ac113,'The ultimate goal.')
 
-    Computer('hal-9000', ac113)
-    Computer('johnny-5', eh1)
+    Computer('hal-9000', ac113,'He knows too much...')
+    Computer('johnny-5', eh1,'Kind of adorable.')
 
-    Professor('Riccardo',mh353,random.randint(1,5),2)
-
+    Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
     
     homeworks = ['hw-1', 
                  'hw-2',
@@ -101,7 +100,7 @@ def create_world ():
     
     for homework in homeworks:
         Homework(homework,
-                 random.choice(Room.rooms))
+                 random.choice(Room.rooms),'Ew.')
 
     students = ['Frankie Freshman',
                 'Joe Junior',
@@ -111,6 +110,7 @@ def create_world ():
     for student in students:
         NPC(student,
             random.choice(Room.rooms),
+            'A student.',
             random.randint(1,5),
             random.randint(1,5))
 
@@ -120,6 +120,7 @@ def create_world ():
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
+            'A troll!',
             random.randint(1,3),
             random.randint(1,3))
 
