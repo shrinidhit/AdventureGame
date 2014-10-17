@@ -66,7 +66,7 @@ def create_world ():
     biconnect(wh1, 'east', eh1)
     biconnect(eh1, 'up', eh2)
     biconnect(eh2, 'up', eh3)
-    biconnect(eh3, 'up', useeh4)
+    biconnect(eh3, 'up', eh4)
     biconnect(oval, 'north',  babson)
     biconnect(oval, 'west',  ac1st)
     biconnect(ac1st, 'north',  ac113)
@@ -75,7 +75,7 @@ def create_world ():
 
     Player('Blubbering-Fool', oval)
 
-    Radar('handy radar',mh353) 
+    myRadar = Radar('handy radar',mh353)
     Thing('blackboard', ac113)
     Thing('lovely-trees', oval)
     Thing('n64',wh3)
@@ -90,6 +90,7 @@ def create_world ():
     Computer('johnny-5', eh1)
 
     Professor('Riccardo',mh353,random.randint(1,5),2)
+
     
     homeworks = ['hw-1', 
                  'hw-2',
@@ -175,6 +176,9 @@ def main ():
         else:
             print 'What??'
             
+def test():
+    create_world()
 
 if __name__ == '__main__':
+    # test()
     main()
