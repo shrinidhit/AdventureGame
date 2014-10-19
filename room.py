@@ -12,7 +12,12 @@ class Room (WObject): #,Container):
         self._contents = []
         self._desc = desc
         Room.rooms.append(self)
-        
+
+    # Check Type Function:
+    def is_room (self):
+        return True
+
+    # Extract Attribute Functions:
     def desc (self):
         return self._desc
 
@@ -22,9 +27,7 @@ class Room (WObject): #,Container):
     def contents (self):
         return self._contents
 
-    # You see room reports only if you are in the same room
-    # or if you have enabled god mode
-
+    # Communication Functions
     def report (self,msg):
         if Player.me.location() is self:
             print msg
@@ -34,10 +37,7 @@ class Room (WObject): #,Container):
     def broadcast (self,msg):
         print msg
 
-    def is_room (self):
-        return True
-
-
+    # Location/Person Shared Functions
     def have_thing (self,t):
         for c in self.contents():
             if c is t:
