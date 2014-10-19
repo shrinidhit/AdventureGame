@@ -27,6 +27,9 @@ class Player (Person):
         for x in self.peek_around():
             if x.name() == name:
                 return x
+        for x in self.backpack():
+            if x.name() == name:
+                return x
         return None
 
     def look_around (self):

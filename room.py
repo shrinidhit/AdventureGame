@@ -10,7 +10,7 @@ class Room (WObject): #,Container):
         WObject.__init__(self,name)
         self._exits = {}
         self._contents = []
-        Room.rooms.append(self)
+        Room.rooms.append(self) 
 
     def exits (self):
         return self._exits
@@ -45,3 +45,4 @@ class Room (WObject): #,Container):
 
     def del_thing (self,t):
         self._contents = [x for x in self._contents if x is not t]
+

@@ -1,11 +1,16 @@
 from mobile import *
 
+
 class Person (MobileThing):    # Container...
 
     def __init__ (self,name,loc):
         MobileThing.__init__(self,name,loc)
         self._max_health = 3
         self._health = self._max_health
+        self._backpack = []
+
+    def backpack (self):
+        return self._backpack
 
     def health (self):
         return self._health
@@ -20,16 +25,23 @@ class Person (MobileThing):    # Container...
     def have_fit (self):
         self.say('Yaaaaah! I am upset!')
 
+    def have_thing(self, thing):
+        if thing in self.backpack():
+            return True
+        return False
+
+    def add_thing (self,t):
+        self._backpack.append(t)
+
+    def del_thing (self,t):
+        self._backpack = [x for x in self._backpack if x is not t]
+
     def people_around (self):
         return [x for x in self.location().contents()
                     if x.is_person() and x is not self]
 
     def stuff_around (self):
         return [x for x in self.location().contents() if not x.is_person()]
-
-
-    # this function should return everything that everyone in the
-    # same location as this person are holding/carrying
 
     def peek_around (self):
         # FIX ME
@@ -84,9 +96,12 @@ class Person (MobileThing):    # Container...
 
     def give (self,actor,target):
         print actor.name(),'is not carrying',self.name()
-        
+
     def accept (self,obj,source):
-        self.say('Thanks, ' + source.name())
+        if obj.location == source:
+            self.say('Thanks, ' + source.name())
+        else:
+            self.say('Thanks, but you don''t have' + source.name())
 
     def is_person (self):
         return True
