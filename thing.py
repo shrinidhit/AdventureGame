@@ -3,10 +3,14 @@ from player import *
 
 class Thing (WObject):
 
-    def __init__ (self,name,loc):
+    def __init__ (self,name,loc,desc):
         WObject.__init__(self,name)
         self._location = loc
+        self._desc = desc
         loc.add_thing(self)
+        
+    def desc(self):
+        return self._desc
 
     def use (self,actor):
         actor.say('I try to use '+self.name()+' but nothing happens')
