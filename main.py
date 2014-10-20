@@ -157,11 +157,11 @@ def main ():
     
     print 'Olinland, version 1.4 (Fall 2014)\n'
 
-
     # Create the world
     create_world()
     
     Player.me.look_around()
+    Player.clock.add_to_register(print_tick_action, 2)
 
     while True:
         response = read_player_input ()
@@ -169,6 +169,7 @@ def main ():
         if response[0] in VERBS:
             result = VERBS[response[0]].act(response[1:])
             if result == NEXT_ROUND:
+                Player.clock.tick()
                 Player.me.look_around()
         else:
             print 'What??'

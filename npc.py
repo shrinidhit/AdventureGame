@@ -8,6 +8,7 @@ class NPC (Person):
         Person.__init__(self,name,loc,desc)
         self._restlessness = restlessness
         self._miserly = miserly
+        Player.me.clock.add_to_register(self.move_and_take_stuff, 1)
 
     #Functions:
     def move_and_take_stuff (self,time):

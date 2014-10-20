@@ -7,6 +7,7 @@ class Professor (NPC):
       def __init__ (self,name,loc,desc,restlessness,professorial):
       	  NPC.__init__(self,name,loc,desc,restlessness,100)
           self._professorial = professorial
+          Player.me.clock.add_to_register(self.lecture, 1)
 
       _topics = ['Turing machines',
                  'the lambda calculus',

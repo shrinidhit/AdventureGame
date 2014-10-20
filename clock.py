@@ -13,7 +13,7 @@ class Clock (object):
     	return self._register
 
     #Functions
-    def register(self, f, priority):
+    def add_to_register(self, f, priority):
     	self._register[f] = priority
     def tick(self):
     	Order = sorted(self._register, key=self._register.get)
