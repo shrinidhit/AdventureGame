@@ -5,6 +5,7 @@ import sys
 
 class Player (Person):
 
+#Statics:
     # static field representing the player
     me = None
     # static field recording god_mode
@@ -12,10 +13,12 @@ class Player (Person):
     # static field representing the clock
     clock = Clock(0)
 
+#Init:
     def __init__ (self,name,loc,desc):
         Person.__init__(self,name,loc,desc)
         Player.me = self
-   
+
+#Functions:
     def thing_named (self,name):
         """Grab any kind of thing from player's location, given its name. The thing may be in the possession of
     the place, or in the possession of a person at the place."""

@@ -1,14 +1,14 @@
 from mobile import *
 
-
-class Person (MobileThing):    # Container...
-
+class Person (MobileThing):
+#Init
     def __init__ (self,name,loc,desc):
         MobileThing.__init__(self,name,loc,desc)
         self._max_health = 3
         self._health = self._max_health
         self._backpack = []
 
+#Functions
     #Check Type Function
     def is_person (self):
         return True

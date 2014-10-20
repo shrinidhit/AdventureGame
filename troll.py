@@ -2,11 +2,12 @@ import random
 from npc import *
 
 class Troll (NPC):
-
+#Init
     def __init__ (self,name,loc,desc,restlessness,hunger):
         NPC.__init__(self,name,loc,desc,restlessness,10)
         self._hunger = hunger
-
+        
+#Functions
     def eat_people (self,time):
       if not self.is_in_limbo():
         if random.randrange(self._hunger) == 0:

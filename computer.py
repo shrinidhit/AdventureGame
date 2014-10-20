@@ -6,7 +6,6 @@ class Computer (Thing):
         Thing.__init__(self,name,loc,desc)
 
     def use (self,actor):
-        
         actor.location().report("BEEP BOOP BEEP BOP")
         actor.say('I use '+self.name()) 
         

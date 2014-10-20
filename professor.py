@@ -3,7 +3,7 @@ from npc import *
 import random
 
 class Professor (NPC):
-
+#Init
       def __init__ (self,name,loc,desc,restlessness,professorial):
       	  NPC.__init__(self,name,loc,desc,restlessness,100)
           self._professorial = professorial
@@ -11,7 +11,12 @@ class Professor (NPC):
       _topics = ['Turing machines',
                  'the lambda calculus',
                  'Godel']
-
+#Functions
+      def win(self):
+        self.say('Congrats, you passed the class.')
+        print "You win - See ya later"
+        sys.exit(0)
+        
       def lecture (self,time):
         if not self.is_in_limbo():
           if random.randrange(self._professorial) == 0:
@@ -19,11 +24,6 @@ class Professor (NPC):
                   self.location().report(self.name()+' starts lecturing about '+random.choice(self._topics))
               else:
                   self.location().report(self.name()+' mutters to himself about '+random.choice(self._topics))
-
-      def win(self):
-        self.say('Congrats, you passed the class.')
-        print "You win - See ya later"
-        sys.exit(0)
 
       def accept (self,obj,source):
         if obj.location() == source:
@@ -40,6 +40,7 @@ class Professor (NPC):
               self.say('Good Job. Perhaps you''re not a fool after all')
               time.sleep(1)
               obj.give(self, source)
+              time.sleep(1)
               self.win()
           else:
             self.say('Thanks ' + source.name())

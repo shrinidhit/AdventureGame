@@ -7,9 +7,11 @@ class Homework (MobileThing):
         MobileThing.__init__(self,name,loc,desc)
         self._done = False
 
+    #Check Type Function:
     def is_homework (self):
         return True
-
+        
+    #Other Functions:
     def is_done (self):
         return self._done
         

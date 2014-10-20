@@ -3,10 +3,11 @@ from room import *
 
 
 class Radar (MobileThing):
-
+    #Init
     def __init__ (self,name,loc,desc):
         MobileThing.__init__(self,name,loc,desc)
-
+        
+    #Functions
     def get_locations(self, actor):
     	Items = []
     	[Items.extend(room.contents()) for room in Room.rooms]

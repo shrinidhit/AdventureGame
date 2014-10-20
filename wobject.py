@@ -1,12 +1,15 @@
+#Imports
 import time
 
+#Class
 class WObject (object):
+    #Init
     def __init__ (self,n):
         self._name = n.replace(' ', '-')
-
+    #Return Attribute
     def name (self):
         return self._name
-      
+    #Check Types
     def is_thing (self):
         return False
   

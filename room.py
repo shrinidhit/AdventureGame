@@ -3,9 +3,10 @@ from player import *
 
 
 class Room (WObject): #,Container):
-
-    rooms = []
-
+#Statics
+    rooms = [] #List of all created Rooms
+    
+#Init
     def __init__ (self,name,desc):
         WObject.__init__(self,name)
         self._exits = {}
@@ -13,6 +14,7 @@ class Room (WObject): #,Container):
         self._desc = desc
         Room.rooms.append(self)
 
+#Functions
     # Check Type Function:
     def is_room (self):
         return True
