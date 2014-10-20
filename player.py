@@ -38,6 +38,7 @@ class Player (Person):
         exits = loc.exits()
         people = self.people_around()
         all_stuff = self.stuff_around()
+        backpack = self.backpack()
 
         print '------------------------------------------------------------'
         print 'You are in', loc.name()
@@ -47,6 +48,11 @@ class Player (Person):
             print 'You see:', names(all_stuff)
         else: 
             print 'The room is empty'
+            
+        if backpack:
+            print 'You are holding:',names(backpack)
+        else:
+            print "You aren't holding anything."
 
         if people:
             print 'You see:', names(people)

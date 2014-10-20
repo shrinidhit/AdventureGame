@@ -118,7 +118,7 @@ def create_world ():
     
     for homework in homeworks:
         Homework(homework,
-                 random.choice(Room.rooms),'Ew.')
+                 random.choice(Room.rooms),"A homework. It's not done. :(")
 
     students = ['Frankie Freshman',
                 'Joe Junior',

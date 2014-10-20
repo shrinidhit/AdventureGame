@@ -27,7 +27,6 @@ class MobileThing (Thing):
         else:
             actor.say('I try to take '+ self.name())
             self.move(actor)
-            actor.add_thing(self)
             actor.say('I now have ' + self.name())
 
     def drop (self,actor):
