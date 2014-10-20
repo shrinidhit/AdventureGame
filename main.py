@@ -1,6 +1,5 @@
-
+#Imports:
 import random
-
 from room import *
 from verbs import *
 from player import *
@@ -11,7 +10,7 @@ from professor import *
 from homework import *
 from computer import *
 
-
+#Global Variables
 REVERSE = {
     'north' : 'south',
     'east' : 'west',
@@ -20,22 +19,39 @@ REVERSE = {
     'up' : 'down',
     'down' : 'up'
 }
+SAME_ROUND = 1
+NEXT_ROUND = 2 
+VERBS = {
+    'quit' : Quit(),
+    'look' : Look(),
+    'wait' : Wait(),
+    'take' : Take(),
+    'drop' : Drop(),
+    'give' : Give(),
+    'god'  : God(),
+    'use'  : Use(),
+    'north' : Direction('north'),
+    'south' : Direction('south'),
+    'east' : Direction('east'),
+    'west' : Direction('west'),
+    'up'   : Direction('up'),
+    'down' : Direction('down')
+}
 
-
-# add an exit in 'fr' toward 'to' in direction 'dir'
+#Creating Connections between locations
 def connect (fr,dir,to):
+    """add an exit in 'fr' toward 'to' in direction 'dir'"""
     fr.exits()[dir] = to
 
-# add an exit in 'fr' toward 'to' in direction 'dir'
-# and an exit the other way, in 'to' toward 'fr' in the reverse direction
 def biconnect (fr,dir,to):
+    """Add an exit in 'fr' toward 'to' in direction 'dir' and an exit the other way, 
+    in 'to' toward 'fr' in the reverse direction"""
     connect(fr,dir,to)
     connect(to,REVERSE[dir],fr)
 
-
-
+#Creating World
 def create_world ():
-
+    #Creating Locations
     mh353 = Room('Riccardo Office','Where Riccardo works.')
     mh3rd = Room('Milas Hall Third Floor','3rd Floor of Milas Hall')
     mh2nd = Room('Milas Hall Second Floor','2nd Floor of Milas Hall')
@@ -54,6 +70,7 @@ def create_world ():
     eh4 = Room('East Hall Fourth Floor','4th Floor of East Hall')
     babson = Room('Babson College','BABBIES')
 
+    #Connecting Locations
     biconnect(mh353, 'east',  mh3rd)
     biconnect(mh3rd, 'down',  mh2nd)
     biconnect(mh2nd, 'down',  mh1st)
@@ -71,15 +88,16 @@ def create_world ():
     biconnect(oval, 'west',  ac1st)
     biconnect(ac1st, 'north',  ac113)
 
-    # The player is the first 'thing' that has to be created
-
+    #Player Creation: The player is the first 'thing' that has to be created
     Player('Blubbering-Fool', oval, "That's you!")
 
+    #Creating Other Objects
     Radar('handy radar',mh353,'So very handy.') 
     Thing('blackboard', ac113,'You can write on it.')
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
     Thing('rock-band',wh4,'Jammin.')
+
     MobileThing('cs-book', oval,'Learning that CS.')
     MobileThing('math-book', oval,'Learning them maths.')
     MobileThing('backpack',wh1,'To hold all the things.')
@@ -88,9 +106,9 @@ def create_world ():
 
     Computer('hal-9000', ac113,'He knows too much...')
     Computer('johnny-5', eh1,'Kind of adorable.')
-
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
     
+    #Random Choosings:
     homeworks = ['hw-1', 
                  'hw-2',
                  'hw-3',
@@ -124,39 +142,17 @@ def create_world ():
             random.randint(1,3),
             random.randint(1,3))
 
-
-VERBS = {
-    'quit' : Quit(),
-    'look' : Look(),
-    'wait' : Wait(),
-    'take' : Take(),
-    'drop' : Drop(),
-    'give' : Give(),
-    'god'  : God(),
-    'use'  : Use(),
-    'north' : Direction('north'),
-    'south' : Direction('south'),
-    'east' : Direction('east'),
-    'west' : Direction('west'),
-    'up'   : Direction('up'),
-    'down' : Direction('down')
-}
-  
-
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
-
 
 def read_player_input ():
     while True:
         response = raw_input('\nWhat is thy bidding? ')
         if len(response)>0:
             return response.split()
+ 
 
-
-SAME_ROUND = 1
-NEXT_ROUND = 2  
-  
+#Main Game Loop: 
 def main ():
     
     print 'Olinland, version 1.4 (Fall 2014)\n'
@@ -177,6 +173,7 @@ def main ():
         else:
             print 'What??'
             
+#Testing Loop:     
 def test():
     create_world()
 
