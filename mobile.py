@@ -25,9 +25,8 @@ class MobileThing (Thing):
         if self.location() == actor:
             actor.say('I already  have ' + self.name())
         else:
-            actor.say('I try to take '+ self.name())
             self.move(actor)
-            actor.say('I now have ' + self.name())
+            actor.say('I now have the '+ self.name() + '. hehehe :)')
 
     def drop (self,actor):
         if self.location() == actor:
@@ -38,7 +37,7 @@ class MobileThing (Thing):
             print actor.name(),'is not carrying',self.name()
 
     def give(self, actor, target):
-        if actor != self.location:
+        if actor != self.location():
             print actor.name(),'is not carrying',self.name()
         else:
             self.drop(actor)

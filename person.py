@@ -52,8 +52,7 @@ class Person (MobileThing):    # Container...
         return [x for x in self.location().contents() if not x.is_person()]
 
     def peek_around (self):
-        # FIX ME
-        return []
+        return [item for x in self.people_around() for item in x.backpack()]
 
     # Take/Give/Exchange Objects
     def take (self,actor):
