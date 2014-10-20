@@ -11,8 +11,9 @@ class Homework (MobileThing):
         return self._done
         
     def do (self):
-        self._done = True
-        self._name = 'done_'+self.name
+        if not self.is_done:
+            self._done = True
+            self._name = 'done-'+self.name
 
     def is_homework (self):
         return True
