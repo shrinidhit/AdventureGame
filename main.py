@@ -150,7 +150,7 @@ def read_player_input ():
         response = raw_input('\nWhat is thy bidding? ')
         if len(response)>0:
             return response.split()
- 
+
 
 #Main Game Loop: 
 def main ():
@@ -176,7 +176,11 @@ def main ():
 #Testing Loop:     
 def test():
     create_world()
+    while True:
+        Player.me.peek_around()
 
+
+#Automatic Run:
 if __name__ == '__main__':
     # test()
     main()
