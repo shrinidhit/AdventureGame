@@ -62,13 +62,14 @@ class Person (MobileThing):    # Container...
         print actor.name(),'is not carrying',self.name()
 
     def give (self,actor,target):
-        print actor.name(),'is not carrying',self.name()
+        print actor.name(),'is not carrying', self.name()
 
     def accept (self,obj,source):
-        if obj.location == source:
+        if obj.location() == source:
+            obj.take_silent(self)
             self.say('Thanks, ' + source.name())
         else:
-            self.say('Thanks, but you don''t have' + source.name())
+            self.say('Thanks, but you don''t have' + obj.name())
 
     # Movement Functions:
     def enter_room (self):

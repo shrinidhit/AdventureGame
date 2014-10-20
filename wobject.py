@@ -1,3 +1,4 @@
+import time
 
 class WObject (object):
     def __init__ (self,n):
