@@ -2,9 +2,10 @@ from thing import *
 
 
 class Computer (Thing):
+    #Init
     def __init__ (self,name,loc,desc):
         Thing.__init__(self,name,loc,desc)
-
+    #Functions:
     def use (self,actor):
         actor.location().report("BEEP BOOP BEEP BOP")
         actor.say('I use '+self.name()) 

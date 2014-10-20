@@ -6,7 +6,7 @@ class Troll (NPC):
     def __init__ (self,name,loc,desc,restlessness,hunger):
         NPC.__init__(self,name,loc,desc,restlessness,10)
         self._hunger = hunger
-        
+
 #Functions
     def eat_people (self,time):
       if not self.is_in_limbo():
@@ -18,4 +18,3 @@ class Troll (NPC):
                 victim.suffer(random.randint(1,3))
             else:
                 self.location().report(self.name() + "'s belly rumbles")
-

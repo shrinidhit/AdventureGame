@@ -2,7 +2,7 @@ from mobile import *
 
 
 class Homework (MobileThing):
-
+    #Init
     def __init__ (self,name,loc,desc):
         MobileThing.__init__(self,name,loc,desc)
         self._done = False
@@ -10,7 +10,7 @@ class Homework (MobileThing):
     #Check Type Function:
     def is_homework (self):
         return True
-        
+
     #Other Functions:
     def is_done (self):
         return self._done

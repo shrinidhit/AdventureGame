@@ -3,7 +3,7 @@ from player import *
 import random
 
 class NPC (Person):
-
+    #Init
     def __init__ (self,name,loc,desc,restlessness,miserly):
         Person.__init__(self,name,loc,desc)
         self._restlessness = restlessness

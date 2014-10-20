@@ -7,6 +7,7 @@ class Clock (object):
 
     #Extract Attributes:
     def time(self):
+    	print self._time
     	return self._time
     def register(self):
     	return self._register
@@ -17,15 +18,12 @@ class Clock (object):
     def tick(self):
     	Order = sorted(self._register, key=self._register.get)
     	for f in Order:
-    		self._register[f]
+    		f(self._time)
+    	self._time += 1
 
-# Used For Testing:
+# # Used For Testing:
 # def test():
 # 	Testclock = Clock(0)
-# 	Testclock.register(Testclock.time(), 1)
-# 	Testclock.register(Testclock.time(), 2)
-# 	Testclock.register(Testclock.time(), 2)
-# 	Testclock.register(Testclock.time(), 1)
 # 	Testclock.tick()
 
 # if __name__ == '__main__':
