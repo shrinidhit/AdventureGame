@@ -1,6 +1,5 @@
 #Imports
 import random
-from person import *
 from player import *
 from mobile import *
 

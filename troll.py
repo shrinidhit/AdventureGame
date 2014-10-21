@@ -9,6 +9,9 @@ class Troll (NPC):
         Player.me.clock.add_to_register(self.eat_people, 2)
 
 #Functions
+    def is_troll(self):
+        return True
+        
     def eat_people (self,time):
       if not self.is_in_limbo():
         if random.randrange(self._hunger) == 0:

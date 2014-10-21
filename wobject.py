@@ -24,3 +24,6 @@ class WObject (object):
 
     def is_homework (self):
         return False
+        
+    def is_troll (self):
+        return False
