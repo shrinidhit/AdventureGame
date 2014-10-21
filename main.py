@@ -9,6 +9,7 @@ from troll import *
 from professor import *
 from homework import *
 from computer import *
+from badninja import *
 
 #Global Variables
 REVERSE = {
@@ -107,6 +108,7 @@ def create_world ():
     Computer('hal-9000', ac113,'He knows too much...')
     Computer('johnny-5', eh1,'Kind of adorable.')
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
+    BadNinja('Ninja', oval, 'bad guy', random.randint(1,10), random.randint(1,10))
     
     #Random Choosings:
     homeworks = ['hw-1', 
@@ -161,7 +163,7 @@ def main ():
     create_world()
     
     Player.me.look_around()
-    Player.clock.add_to_register(print_tick_action, 2)
+    Player.clock.add_to_register(print_tick_action, 3)
 
     while True:
         response = read_player_input ()

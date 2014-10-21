@@ -6,7 +6,7 @@ class Troll (NPC):
     def __init__ (self,name,loc,desc,restlessness,hunger):
         NPC.__init__(self,name,loc,desc,restlessness,10)
         self._hunger = hunger
-        Player.me.clock.add_to_register(self.eat_people, 1)
+        Player.me.clock.add_to_register(self.eat_people, 2)
 
 #Functions
     def eat_people (self,time):
