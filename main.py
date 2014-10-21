@@ -10,6 +10,7 @@ from professor import *
 from homework import *
 from computer import *
 from badninja import *
+from butterfly import *
 
 #Global Variables
 REVERSE = {
@@ -109,6 +110,8 @@ def create_world ():
     Computer('johnny-5', eh1,'Kind of adorable.')
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
     BadNinja('Ninja', oval, 'bad guy', random.randint(1,10), random.randint(1,10))
+    Butterfly('Eric',oval,'')
+    Butterfly('Fleur',oval,'')
     
     #Random Choosings:
     homeworks = ['hw-1', 
@@ -137,12 +140,12 @@ def create_world ():
     trolls = ['Polyphemus',
               'Gollum']
 
-    for troll in trolls:
-      Troll(troll,
-            random.choice(Room.rooms),
-            'A troll!',
-            random.randint(1,3),
-            random.randint(1,3))
+#    for troll in trolls:
+#      Troll(troll,
+#            random.choice(Room.rooms),
+#            'A troll!',
+#            random.randint(1,3),
+#            random.randint(1,3))
 
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
