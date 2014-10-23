@@ -9,7 +9,7 @@ class Person (MobileThing):
         self._max_health = 3
         self._health = self._max_health
         self._backpack = []
-        self._character = random.choice(Responses.personalities)
+        self._character = random.choice(Responses.personalities)()
 
 #Functions
     #Check Type Function

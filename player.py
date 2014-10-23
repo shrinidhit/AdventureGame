@@ -20,6 +20,7 @@ class Player (Person):
         Player.me = self
         self._credits = 0
         self._courses = []
+        self._personality = PlayerR()
         self._health = 50
         self._max_health = 50
         self.clock.add_to_register(self.monitor_health, 20)
@@ -103,8 +104,8 @@ class Player (Person):
     def converse(self, target):
         if target.is_person():
             #Getting Options
-            options = [random.choice(PlayerR.helps), random.choice(PlayerR.gossip),
-            random.choice(PlayerR.insult), random.choice(PlayerR.compliment)]
+            options = [random.choice(self._personality.helps), random.choice(self._personality.gossip),
+            random.choice(self._personality.insult), random.choice(self._personality.compliment)]
             #Displaying Options
             print 'What would you like to say?: '
             for i in range(len(options)):
