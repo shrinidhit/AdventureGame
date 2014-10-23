@@ -12,6 +12,7 @@ from computer import *
 from badninja import *
 from butterfly import *
 from trollhunter import *
+from course import *
 
 #Global Variables
 REVERSE = {
@@ -55,13 +56,19 @@ def biconnect (fr,dir,to):
 #Creating World
 def create_world ():
     #Creating Locations
-    mh353 = Room('Riccardo Office','Where Riccardo works.')
+    mh353 = Room("Riccardo's Office",'Where Riccardo resides.')
     mh3rd = Room('Milas Hall Third Floor','3rd Floor of Milas Hall')
     mh2nd = Room('Milas Hall Second Floor','2nd Floor of Milas Hall')
     mh1st = Room('Milas Hall First Floor','1st Floor of Milas Hall')
     oval = Room('Oval','Quite round in appearance.')
     ac1st = Room('Academic Center First Floor','Ah, the sweet smell of knowledge.')
-    ac113 = Room('Academic Center 113','Home of GPro')
+    ac2nd = Room('Academic Center Second Floor','Ah, the sweet smell of knowledge.')
+    ac3rd = Room('Academic Center Third Floor','Ah, the sweet smell of knowledge.')
+    ac4th = Room('Academic Center Fourth Floor','Ah, the sweet smell of knowledge.')
+    ac113 = Room('Academic Center Room 113','Home of GPro')
+    ac213 = Room('Academic Center Room 213','Home of DesNat and ModSim')
+    ac326 = Room('Academic Center Room 326','Home of AHS')
+    ac429 = Room('Academic Center Room 429','Home of ISIM')
     cc1st = Room('Campus Center First Floor','Dat food though.')
     wh1 = Room('West Hall First Floor','1st Floor of West Hall')
     wh2 = Room('West Hall Second Floor','2nd Floor of West Hall')
@@ -71,7 +78,7 @@ def create_world ():
     eh2 = Room('East Hall Second Floor','2nd Floor of East Hall')
     eh3 = Room('East Hall Third Floor','3rd Floor of East Hall')
     eh4 = Room('East Hall Fourth Floor','4th Floor of East Hall')
-    babson = Room('Babson College','BABBIES')
+    babson = Room('Babson College','You see Babbies, literally everwhere. A small, faint voice whispers in the distance... ~busssinesssss~')
 
     #Connecting Locations
     biconnect(mh353, 'east',  mh3rd)
@@ -90,21 +97,32 @@ def create_world ():
     biconnect(oval, 'north',  babson)
     biconnect(oval, 'west',  ac1st)
     biconnect(ac1st, 'north',  ac113)
+    biconnect(ac1st, 'up', ac2nd)
+    biconnect(ac2nd, 'north', ac213)
+    biconnect(ac2nd, 'up', ac3rd)
+    biconnect(ac3rd, 'north', ac326)
+    biconnect(ac3rd, 'up', ac4th)
+    biconnect(ac4th, 'north', ac429)
 
     #Player Creation: The player is the first 'thing' that has to be created
     Player('Blubbering-Fool', oval, "That's you!")
 
     #Creating Other Objects
-    Radar('handy radar',mh353,'So very handy.') 
+    Radar('handy-radar',mh353,'So very handy.') 
     Thing('blackboard', ac113,'You can write on it.')
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
     Thing('rock-band',wh4,'Jammin.')
 
+    Course('DesNat',ac213,4,"The smell of molten Delrin fills the air. Taking in a deep breath, you can feel the carcinogens gnawing away at your life's very essence. This, truly, is what it means to be an engineer.")
+    Course('ISIM',ac429,4,"Resistors are strewn across every visible surface. If your personal hygiene were as bad as your circuit hygiene, you'd probably have contracted the Bubonic Plague by now.")
+    Course('AHS',ac326,4,"What is this shit? This isn't engineering...")
+    Course('ModSim',ac213,4,"There are so many sharks, rays, and scallops that you can't see anything else. The world has been consumed by marine life.")
+
     MobileThing('cs-book', oval,'Learning that CS.')
     MobileThing('math-book', oval,'Learning them maths.')
-    MobileThing('backpack',wh1,'To hold all the things.')
-    MobileThing('lunch',cc1st,'Yummy in your tummy.')
+    MobileThing('ruler',wh1,'So many measurements.')
+    MobileThing('study-abroad-pamphlet',cc1st,"Hmm... maybe I'll go to Europe next semester...")
     MobileThing('knowledge',ac113,'The ultimate goal.')
 
     Computer('hal-9000', ac113,'He knows too much...')
@@ -125,7 +143,7 @@ def create_world ():
     
     for homework in homeworks:
         Homework(homework,
-                 random.choice(Room.rooms),"A homework. It's not done. :(")
+                 random.choice(Room.rooms),"A homework. It's not done.")
 
     students = ['Frankie Freshman',
                 'Joe Junior',

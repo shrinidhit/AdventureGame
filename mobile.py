@@ -1,5 +1,6 @@
 from thing import *
 
+
 class MobileThing (Thing):
 
     def __init__ (self,name,loc,desc):
@@ -23,7 +24,7 @@ class MobileThing (Thing):
     #Take/Drop/Give/Exchange Functions:
     def take (self,actor):
         if self.location() == actor:
-            actor.say('I already  have ' + self.name())
+            actor.say('I already have ' + self.name())
         else:
             if self.location().is_person():
                 self.location().say('Sniffle. You took ' + self.name() + ' away from me')
@@ -32,7 +33,7 @@ class MobileThing (Thing):
 
     def take_silent (self, actor):
         if self.location() == actor:
-            actor.say('I already  have ' + self.name())
+            actor.say('I already have ' + self.name())
         else:
             self.move(actor)
 
@@ -50,5 +51,3 @@ class MobileThing (Thing):
         else:
             actor.say('I give ' + self.name() + ' to ' + target.name())
             target.accept(self, actor)
-
-

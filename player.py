@@ -17,8 +17,12 @@ class Player (Person):
     def __init__ (self,name,loc,desc):
         Person.__init__(self,name,loc,desc)
         Player.me = self
+        self._credits = 0
 
 #Functions:
+    def credits(self):
+        return self._credits
+
     def thing_named (self,name):
         """Grab any kind of thing from player's location, given its name. The thing may be in the possession of
     the place, or in the possession of a person at the place."""
