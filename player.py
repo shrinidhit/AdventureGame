@@ -1,5 +1,6 @@
 from person import *
 from clock import *
+from responses import PlayerR
 
 import sys
 
@@ -73,3 +74,23 @@ class Player (Person):
         Person.die(self)
         print 'This game for you is now over...'
         sys.exit(0)
+
+    def converse(self, target):
+        if target.is_person():
+            #Getting Options
+            options = [random.choice(PlayerR.helps), random.choice(PlayerR.gossip),
+            random.choice(PlayerR.insult), random.choice(PlayerR.compliment)]
+            #Displaying Options
+            print 'What would you like to say?: '
+            for i in range(len(options)):
+                print '%d. %s' %(i + 1, options[i])
+            #Getting Response
+            response = int(raw_input(''))
+            while response < 1 or response > 4:
+                print 'Enter a valid choice from 1-4: '
+                response = int(raw_input(''))
+            self.say(options[int(response) - 1])
+            print response
+            target.talk(response)
+        else:
+            self.location.report('You can only talk to people. Sorry, this world isn''t magical')

@@ -35,6 +35,7 @@ VERBS = {
     'give' : Give(),
     'god'  : God(),
     'use'  : Use(),
+    'talk' : Talk(),
     'north' : Direction('north'),
     'south' : Direction('south'),
     'east' : Direction('east'),

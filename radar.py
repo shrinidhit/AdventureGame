@@ -2,7 +2,7 @@ from mobile import *
 from room import *
 
 
-class Radar (MobileThing):
+class Radar(MobileThing):
     #Init
     def __init__ (self,name,loc,desc):
         MobileThing.__init__(self,name,loc,desc)

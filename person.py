@@ -1,4 +1,6 @@
+import random
 from mobile import *
+from responses import Responses, PlayerR
 
 class Person (MobileThing):
 #Init
@@ -7,6 +9,7 @@ class Person (MobileThing):
         self._max_health = 3
         self._health = self._max_health
         self._backpack = []
+        self._character = random.choice(Responses.personalities)
 
 #Functions
     #Check Type Function
@@ -111,3 +114,14 @@ class Person (MobileThing):
     def die (self):
         self.location().broadcast('An earth-shattering, soul-piercing scream is heard...')
         self.destroy()
+
+    def talk (self, categ):
+        if categ == 1:
+            self.say(random.choice(self._character.helps))
+        if categ == 2:
+            self.say(random.choice(self._character.gossip))
+        if categ == 3:
+            self.say(random.choice(self._character.insult))
+        if categ == 4:
+            self.say(random.choice(self._character.compliment))
+

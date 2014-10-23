@@ -1,15 +1,40 @@
+import random
+from room import *
+
+
 class Responses(object):
 	class Sweet(object):
 		names = ['nemo', 'dori', 'sneezy']
 		messages = ['Your friend', 'Pretty darn cute', 'SUPER hyper...ALL the time', 'Made of rainbows and unicorns...literally']
+
+		helps = ['Radar is your best friend', 'Knowledge is Power', 'Find a robotic friend']
+		gossip = ['IDK too much about anything', 'Sowwy, I don''t gossip', 'DUDE, that''t not cool']
+		insult = ['...', 'well then.', 'wow...guess I won''t be helping you']
+		compliment = ['HI FRIEND!', 'I like you :)', 'We can get married?']
 	class Sassy(object):
 		names = ['dancer','mileyCyrus', 'beyonce']
 		messages = ['Oh so cute...but DANGEROUS', 'Don''t get on their bad side...', 'One SASSY diva', 'will WRECK you']
+
+		helps = ['Pshhh...maybe if you pay me', 'Nice try bro']
+		gossip = ['Yeaaa, I''m not too fond of them', 'I really like them']
+		insult = ['DAMN. Someone''s got attitude.', 'EXCUSE me, you''re no match for me', 'Pshh...loser']
+		compliment = ['Sucking up to me, huh?', 'Yea, you can''t bribe me with fancy talk. Seeya']
 	class Grumpy(object):
 		names = ['grumpy', 'dopey', 'rudolph', 'cookiemonster', 'Thor']
 		messages = ['A meathead on a mission', 'Your grouchy gramps', 'Woke up on the wrong side of the bed today...']
+		
+		helps = ['Hmph..you just woke me up and you expect help?', 'Nope.']
+		gossip = ['Huff...youngsters these days', 'I don''t care.']
+		insult = ['Whatever.', 'Take your ridiculousness elsewhere', 'WOW. you woke me up from my nap for that?']
+		compliment = ['...I don''t know you', 'Try that on someone stupider']
+
 	personalities = [Sweet, Sassy, Grumpy]
 
+class PlayerR(object):
+	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', 'Help! I''m so confuzzled']
+	gossip = ['Dude, isn''t %s so nice?', 'WHAT is up with %s? SO messed up...'] #%random.choice([person for room in Room.rooms for person in room.contents() if person.is_person])]
+	insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
+	compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 class MobileThingR(Responses.Sweet):
 	taken = ['Aww I liked ', 'Sniffle. You took my ', 'Whatevs, I guess I can deal without my ', 'Good riddance -I don''t need my ', 'You wanna go bro? I''ll fight for my ']
 	take = ['hehe :)', 'Great, another thing to carry', 'Heavy...this better be useful', 'YAY', '...fantastic?']
