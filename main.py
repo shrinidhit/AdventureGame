@@ -15,6 +15,7 @@ from trollhunter import *
 from course import *
 from responses import *
 from initials import *
+from sleeproom import *
 
 #Global Variables
 REVERSE = {
@@ -37,6 +38,8 @@ VERBS = {
     'god'  : God(),
     'use'  : Use(),
     'talk' : Talk(),
+    'sleep' : Sleep(),
+    'help' : Help(),
     'north' : Direction('north'),
     'south' : Direction('south'),
     'east' : Direction('east'),
@@ -67,18 +70,26 @@ def static_world():
     ac3rd = Room('Academic Center Third Floor','Ah, the sweet smell of knowledge.')
     ac4th = Room('Academic Center Fourth Floor','Ah, the sweet smell of knowledge.')
     ac113 = Room('Academic Center Room 113','Home of GPro')
-    ac213 = Room('Academic Center Room 213','Home of DesNat and ModSim')
+    ac213 = Room('Academic Center Room 213','Design Studio')
     ac326 = Room('Academic Center Room 326','Home of AHS')
     ac429 = Room('Academic Center Room 429','Home of ISIM')
-    cc1st = Room('Campus Center First Floor','Dat food though.')
+    cc1st = Room('Campus Center First Floor','Dat food though.')    
     wh1 = Room('West Hall First Floor','1st Floor of West Hall')
     wh2 = Room('West Hall Second Floor','2nd Floor of West Hall')
     wh3 = Room('West Hall Third Floor','3rd Floor of West Hall')
     wh4 = Room('West Hall Fourth Floor','4th Floor of West Hall')
+    wh113 = SleepRoom('West Hall Room 113','What a comfy room. Seems great for napping.')
+    wh214 = SleepRoom('West Hall Room 214','What a comfy room. Seems great for napping.')
+    wh325 = SleepRoom('West Hall Room 325','What a comfy room. Seems great for napping.')
+    wh426 = SleepRoom('West Hall Room 426','What a comfy room. Seems great for napping.')
     eh1 = Room('East Hall First Floor','1st Floor of East Hall')
     eh2 = Room('East Hall Second Floor','2nd Floor of East Hall')
     eh3 = Room('East Hall Third Floor','3rd Floor of East Hall')
     eh4 = Room('East Hall Fourth Floor','4th Floor of East Hall')
+    eh116 = SleepRoom('East Hall Room 116','What a comfy room. Seems great for napping.')
+    eh215 = SleepRoom('East Hall Room 215','What a comfy room. Seems great for napping.')
+    eh324 = SleepRoom('East Hall Room 324','What a comfy room. Seems great for napping.')
+    eh423 = SleepRoom('East Hall Room 423','What a comfy room. Seems great for napping.')
     babson = Room('Babson College','You see Babbies, literally everwhere. A small, faint voice whispers in the distance... ~busssinesssss~')
 
     Connections = [[mh353, 'east',  mh3rd],
@@ -87,13 +98,21 @@ def static_world():
     [mh1st, 'north',  oval],
     [oval, 'east',  cc1st],
     [cc1st, 'east',  wh1],
+    [wh1, 'north', wh113],
     [wh1, 'up', wh2],
+    [wh2, 'north', wh214],
     [wh2, 'up', wh3],
+    [wh3, 'north', wh325],
     [wh3, 'up', wh4],
+    [wh4, 'north', wh426],
     [wh1, 'east', eh1],
+    [eh1, 'north', eh116],
     [eh1, 'up', eh2],
+    [eh2, 'north', eh215],
     [eh2, 'up', eh3],
+    [eh3, 'north', eh324],
     [eh3, 'up', eh4],
+    [eh4, 'north', eh423],
     [oval, 'north',  babson],
     [oval, 'west',  ac1st],
     [ac1st, 'north',  ac113],

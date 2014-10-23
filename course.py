@@ -22,7 +22,8 @@ class Course(MobileThing):
 	            self.move(actor)
 	            actor.say('I just took '+self.name()+'! Gee, what a great class. I feel full of knowledge.')
 	            actor._credits += self.credits()
-	            if actor.credits() >= 16:
+                actor._health -= 10
+                if actor.credits() >= 16:
 	            	actor.say("Wow, looks like I just finished a semester at Olin! I'm so smart now!")
 	            	print "You win - See ya later"
 	            	sys.exit(0)

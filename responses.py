@@ -1,5 +1,7 @@
 import random
 from room import *
+from person import *
+from player import *
 
 
 class Responses(object):
@@ -33,8 +35,8 @@ class Responses(object):
 	personalities = [Sweet, Sassy, Grumpy]
 
 class PlayerR(object):
-	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', 'Help! I''m so confuzzled']
-	gossip = ['Dude, isn''t %s so nice?', 'WHAT is up with %s? SO messed up...'] #%random.choice([person for room in Room.rooms for person in room.contents() if person.is_person])]
+	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', "Help! I'm so confuzzled"]
+	gossip = ["Dude, isnt %s so nice?", 'WHAT is up with %s? SO messed up...'] #%random.choice([person for person in Player.me.people_around()])
 	insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
 	compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 
@@ -42,20 +44,20 @@ class MobileThingR(Responses.Sweet):
 	taken = ['Aww I liked ', 'Sniffle. You took my ', 'Whatevs, I guess I can deal without my ', 'Good riddance -I don''t need my ', 'You wanna go bro? I''ll fight for my ']
 	take = ['hehe :)', 'Great, another thing to carry', 'Heavy...this better be useful', 'YAY', '...fantastic?']
 	drop = ['aww :(', 'Adios Amigo', 'So Long, Farewell', 'Adieu', 'Good bye, my love']
-	give = ['Make good use of it. Or you WILL be sorry', 'Good Riddance', 'Love You!', 'Let''s be friends']
+	give = ['Make good use of it. Or you WILL be sorry', 'Good Riddance', 'Love You!', "Let's be friends"]
 
 class BadNinjaR(Responses.Sassy):
-	hwTaken = ['snatches the homework. Gotta have quicker hands, bro',
-		'brushes by and some homework''s gone....suspicious',
+	hwTaken = ['snatches the homework. Gotta have quicker hands, bro.',
+		"brushes by and some homework's gone....suspicious.",
 		'ate the homework. Sorry, tell your teacher your dog ate it?']
 
-	hwAlmostTaken = ['licks lips at the homework....delish',
-		'didn''t finish their homework. Be wary...',
-		'shyly glances at the homework']
+	hwAlmostTaken = ['licks lips at the homework... delish.',
+		"didn't finish their homework. Be wary...",
+		'shyly glances at the homework.']
 
-	hwDestroy = ['Wow it''s so pwetty! Imma make it sparkle....with fire!',
-	'Damn, this person''s smart. BURN! I can''t have competion.',
-	'Gonna casually look at this. Oopsie, I accidentally lit it on fire',]
+	hwDestroy = ["Wow it's so pwetty! Imma make it sparkle....with fire!",
+	"Damn, this person's smart. BURN! I can't have competion.",
+	'Gonna casually look at this. Oopsie, I accidentally lit it on fire.',]
 
 	names = Responses.Sassy.names
 	messages = Responses.Sassy.messages
@@ -70,9 +72,9 @@ class ButterflyR(Responses.Sweet):
 
 class TrollHunterR(Responses.Grumpy):
     battle_phrases = ["AHA! I've got you now, troll!", "Taste my fury, you hellish beast!", "Die, fiend, DIE!"]
-    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me."]
+    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me!"]
 
 class ComputerR(Responses.Sweet):
 	names = Responses.Sweet.names
-	names.extend(['R2D2', 'R2D2'])
+	names.extend(['R2D2', 'C3P0'])
 	messages = ['So very handy. Try it!', 'Knows too much...suspiciously not human', 'Clink. Clink. Clack', 'Kind of adorable. A little monotoned and clinky but hey.']
