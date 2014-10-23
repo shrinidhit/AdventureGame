@@ -40,6 +40,7 @@ class Responses(object):
 
 #Player Specific Sayings
 class PlayerR(object):
+
 	def __init__(self):
 		person = random.choice(['professor', 'computer', 'troll', 'butterfly', 'badninja', 'trollhunter'])
 		self.helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', 'Help! I''m so confuzzled']
