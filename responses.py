@@ -4,6 +4,7 @@ from person import *
 from player import *
 
 
+
 class Responses(object):
 	class Sweet(object):
 		names = ['nemo', 'dori', 'sneezy']
@@ -35,8 +36,13 @@ class Responses(object):
 	personalities = [Sweet, Sassy, Grumpy]
 
 class PlayerR(object):
+<<<<<<< HEAD
 	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', "Help! I'm so confuzzled"]
 	gossip = ["Dude, isnt %s so nice?", 'WHAT is up with %s? SO messed up...'] #%random.choice([person for person in Player.me.people_around()])
+=======
+	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', 'Help! I''m so confuzzled']
+	gossip = ['Dude, isn''t the %s so nice?', 'WHAT is up with the %s? SO messed up...' %(random.choice(['professor', 'computer', 'troll', 'butterfly', 'badninja', 'trollhunter']))]
+>>>>>>> 36e63a8cf2752712cd6db284c6dd33eb5a9b35c6
 	insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
 	compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 
