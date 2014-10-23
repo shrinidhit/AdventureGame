@@ -1,5 +1,4 @@
 import random
-from room import *
 
 
 class Responses(object):
@@ -34,7 +33,7 @@ class Responses(object):
 
 class PlayerR(object):
 	helps = ['Hey, couldja give a pal some advice?', 'Pweeease help me?', 'Help! I''m so confuzzled']
-	gossip = ['Dude, isn''t %s so nice?', 'WHAT is up with %s? SO messed up...'] #%random.choice([person for room in Room.rooms for person in room.contents() if person.is_person])]
+	gossip = ['Dude, isn''t the %s so nice?', 'WHAT is up with the %s? SO messed up...' %(random.choice(['professor', 'computer', 'troll', 'butterfly', 'badninja', 'trollhunter']))]
 	insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
 	compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 
