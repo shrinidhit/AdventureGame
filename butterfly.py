@@ -2,6 +2,8 @@
 import random
 from player import *
 from mobile import *
+from responses import ButterflyR
+from room import Room
 
 class Butterfly(MobileThing):
 #Init
@@ -55,19 +57,20 @@ class Butterfly(MobileThing):
                 actor.say('I already  have ' + self.name())
             else:
                 if self.location().is_person():
-                    self.location().say('Sniffle. You took ' + self.name() + ' away from me')
+                    self.location().say(choice(MobileThingR.taken) + self.name())
                 self.move(actor)
-                actor.say('I now have '+ self.name() + '. hehehe :)')
+                actor.say('I now have '+ self.name() + '. ' + choice(MobileThingR.take))
         else:
             actor.say("I try to catch "+self.name()+", but it's much too fast!")
             
     #Modified from method in Person for use in move_somewhere
     def go (self,direction):
         loc = self.location()
-        exits = loc.exits()
-        if direction in exits:
-            t = exits[direction]
-            loc.report(self.name()+' flies from '+ loc.name()+' to '+t.name())
-            self.move(t)
-            return True
+        if type(loc) is Room:
+            exits = loc.exits()
+            if direction in exits:
+                t = exits[direction]
+                loc.report(self.name()+' flies from '+ loc.name()+' to '+t.name())
+                self.move(t)
+                return True
         

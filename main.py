@@ -12,6 +12,7 @@ from computer import *
 from badninja import *
 from butterfly import *
 from trollhunter import *
+from responses import *
 
 #Global Variables
 REVERSE = {
@@ -95,24 +96,26 @@ def create_world ():
     Player('Blubbering-Fool', oval, "That's you!")
 
     #Creating Other Objects
-    Radar('handy radar',mh353,'So very handy.') 
+    Radar('handy radar',mh353,'So very handy. Try it!') 
     Thing('blackboard', ac113,'You can write on it.')
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
     Thing('rock-band',wh4,'Jammin.')
 
-    MobileThing('cs-book', oval,'Learning that CS.')
+    MobileThing('cs-book', oval,'Learning that CS ;).')
     MobileThing('math-book', oval,'Learning them maths.')
-    MobileThing('backpack',wh1,'To hold all the things.')
+    MobileThing('backpack',wh1,'To hold ALL the things.')
     MobileThing('lunch',cc1st,'Yummy in your tummy.')
-    MobileThing('knowledge',ac113,'The ultimate goal.')
+    MobileThing('knowledge',ac113,'The ultimate goal. Of life. nudge, nudge, hint')
 
-    Computer('hal-9000', ac113,'He knows too much...')
-    Computer('johnny-5', eh1,'Kind of adorable.')
+    Computer('hal-9000', ac113,'Knows too much...suspiciously not human')
+    Computer('johnny-5', eh1,'Kind of adorable. A little monotoned and clinky but hey.')
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
-    BadNinja('Ninja', oval, 'A bad guy.',random.randint(1,5),random.randint(1,5))
-    TrollHunter('Thor',mh1st,'A meathead on a mission.',random.randint(1,3),random.randint(1,8))
-    Butterfly('Eric',oval,'')
+    BadNinja('pinkpanda', oval, 'Oh so sweet...wait never mind.',random.randint(1,5),random.randint(1,5))
+    BadNinja('swiper', eh1, '"Siper No Swiping" unfortunately doesn''t work here',random.randint(1,5),random.randint(1,5))
+    BadNinja('wasabi', ac113, 'Cooking has given this kid mad ninja skills.',random.randint(1,5),random.randint(1,5))
+    Thor = TrollHunter('Thor',mh1st,'A meathead on a mission.',random.randint(1,3),random.randint(1,8))
+    Eric = Butterfly('Eric',oval,'')
     Butterfly('Fleur',babson,'')
     
     #Random Choosings:
@@ -148,6 +151,8 @@ def create_world ():
             'A troll!',
             random.randint(1,3),
             random.randint(1,3))
+    Eric.take(Thor)
+    Eric.go('up')
 
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
