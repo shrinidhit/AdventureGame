@@ -100,4 +100,9 @@ class Give (Verb):
         obj1.give(Player.me,obj2)
         return SAME_ROUND
 
+class Talk (Verb):
+    def action1 (self, obj1):
+        Player.me.converse(obj1)
+        return SAME_ROUND
+
         

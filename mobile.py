@@ -1,4 +1,6 @@
+from random import choice
 from thing import *
+from responses import MobileThingR
 
 
 class MobileThing (Thing):
@@ -27,9 +29,9 @@ class MobileThing (Thing):
             actor.say('I already have ' + self.name())
         else:
             if self.location().is_person():
-                self.location().say('Sniffle. You took ' + self.name() + ' away from me')
+                self.location().say(choice(MobileThingR.taken) + self.name())
             self.move(actor)
-            actor.say('I now have the '+ self.name() + '. hehehe :)')
+            actor.say('I now have the '+ self.name() + '. ' + choice(MobileThingR.take))
 
     def take_silent (self, actor):
         if self.location() == actor:
@@ -41,7 +43,7 @@ class MobileThing (Thing):
         if self.location() == actor:
             self.move(actor.location())
             actor.del_thing(self)
-            actor.say('I have now dropped ' + self.name())
+            actor.say('I have now dropped ' + self.name() + '. ' + choice(MobileThingR.drop))
         else:
             print actor.name(),'is not carrying',self.name()
 
@@ -49,5 +51,6 @@ class MobileThing (Thing):
         if actor != self.location():
             print actor.name(),'is not carrying',self.name()
         else:
-            actor.say('I give ' + self.name() + ' to ' + target.name())
+            actor.say('I give ' + self.name() + ' to ' + target.name()+ '. ' + choice(MobileThingR.give))
             target.accept(self, actor)
+

@@ -13,6 +13,8 @@ from badninja import *
 from butterfly import *
 from trollhunter import *
 from course import *
+from responses import *
+from initials import *
 
 #Global Variables
 REVERSE = {
@@ -34,6 +36,7 @@ VERBS = {
     'give' : Give(),
     'god'  : God(),
     'use'  : Use(),
+    'talk' : Talk(),
     'north' : Direction('north'),
     'south' : Direction('south'),
     'east' : Direction('east'),
@@ -53,10 +56,8 @@ def biconnect (fr,dir,to):
     connect(fr,dir,to)
     connect(to,REVERSE[dir],fr)
 
-#Creating World
-def create_world ():
-    #Creating Locations
-    mh353 = Room("Riccardo's Office",'Where Riccardo resides.')
+def static_world():
+    mh353 = Room("Riccardo's Office",'Where Riccardo works.')
     mh3rd = Room('Milas Hall Third Floor','3rd Floor of Milas Hall')
     mh2nd = Room('Milas Hall Second Floor','2nd Floor of Milas Hall')
     mh1st = Room('Milas Hall First Floor','1st Floor of Milas Hall')
@@ -80,35 +81,36 @@ def create_world ():
     eh4 = Room('East Hall Fourth Floor','4th Floor of East Hall')
     babson = Room('Babson College','You see Babbies, literally everwhere. A small, faint voice whispers in the distance... ~busssinesssss~')
 
-    #Connecting Locations
-    biconnect(mh353, 'east',  mh3rd)
-    biconnect(mh3rd, 'down',  mh2nd)
-    biconnect(mh2nd, 'down',  mh1st)
-    biconnect(mh1st, 'north',  oval)
-    biconnect(oval, 'east',  cc1st)
-    biconnect(cc1st, 'east',  wh1)
-    biconnect(wh1, 'up', wh2)
-    biconnect(wh2, 'up', wh3)
-    biconnect(wh3, 'up', wh4)    
-    biconnect(wh1, 'east', eh1)
-    biconnect(eh1, 'up', eh2)
-    biconnect(eh2, 'up', eh3)
-    biconnect(eh3, 'up', eh4)
-    biconnect(oval, 'north',  babson)
-    biconnect(oval, 'west',  ac1st)
-    biconnect(ac1st, 'north',  ac113)
-    biconnect(ac1st, 'up', ac2nd)
-    biconnect(ac2nd, 'north', ac213)
-    biconnect(ac2nd, 'up', ac3rd)
-    biconnect(ac3rd, 'north', ac326)
-    biconnect(ac3rd, 'up', ac4th)
-    biconnect(ac4th, 'north', ac429)
+    Connections = [[mh353, 'east',  mh3rd],
+    [mh3rd, 'down',  mh2nd],
+    [mh2nd, 'down',  mh1st],
+    [mh1st, 'north',  oval],
+    [oval, 'east',  cc1st],
+    [cc1st, 'east',  wh1],
+    [wh1, 'up', wh2],
+    [wh2, 'up', wh3],
+    [wh3, 'up', wh4],
+    [wh1, 'east', eh1],
+    [eh1, 'up', eh2],
+    [eh2, 'up', eh3],
+    [eh3, 'up', eh4],
+    [oval, 'north',  babson],
+    [oval, 'west',  ac1st],
+    [ac1st, 'north',  ac113]
+    [ac1st, 'up', ac2nd],
+    [ac2nd, 'north,' ac213],
+    [ac2nd, 'up', ac3rd],
+    [ac3rd, 'north', ac326],
+    [ac3rd, 'up', ac4th],
+    [ac4th, 'north', ac429]]
 
-    #Player Creation: The player is the first 'thing' that has to be created
+    for con in Connections:
+        biconnect(con[0], con[1], con[2])
+
     Player('Blubbering-Fool', oval, "That's you!")
 
-    #Creating Other Objects
-    Radar('handy-radar',mh353,'So very handy.') 
+    #Needed Objects:
+    Radar('handy radar',mh353,'So very handy. Try it!') 
     Thing('blackboard', ac113,'You can write on it.')
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
@@ -119,36 +121,24 @@ def create_world ():
     Course('AHS',ac326,4,"What is this shit? This isn't engineering...")
     Course('ModSim',ac213,4,"There are so many sharks, rays, and scallops that you can't see anything else. The world has been consumed by marine life.")
 
-    MobileThing('cs-book', oval,'Learning that CS.')
-    MobileThing('math-book', oval,'Learning them maths.')
-    MobileThing('ruler',wh1,'So many measurements.')
     MobileThing('study-abroad-pamphlet',cc1st,"Hmm... maybe I'll go to Europe next semester...")
-    MobileThing('knowledge',ac113,'The ultimate goal.')
+    MobileThing('cs-book', oval,'Learning that CS ;).')
+    MobileThing('math-book', oval,'Learning them maths.')
+    MobileThing('ruler',wh1,'To measure ALL the things.')
+    MobileThing('lunch',cc1st,'Yummy in your tummy.')
+    MobileThing('knowledge',ac113,'The ultimate goal. Of life. nudge, nudge, hint')
 
-    Computer('hal-9000', ac113,'He knows too much...')
-    Computer('johnny-5', eh1,'Kind of adorable.')
-    Professor('Riccardo',mh353,"He's the best!",random.randint(1,5),2)
-    BadNinja('Ninja', oval, 'A bad guy.',random.randint(1,5),random.randint(1,5))
-    TrollHunter('Thor',mh1st,'A meathead on a mission.',random.randint(1,3),random.randint(1,8))
-    Butterfly('Eric',oval,'')
-    Butterfly('Fleur',babson,'')
-    
+    Computer('hal-9000', ac113,'Knows too much...suspiciously not human')
+    Computer('johnny-5', eh1,'Kind of adorable. A little monotoned and clinky but hey.')
+    Professor('Riccardo',mh353,"He's the best!",random.randint(1,5), random.randint(1,5))
+
+#Creating World
+def create_world ():
+    static_world()    
     #Random Choosings:
-    homeworks = ['hw-1', 
-                 'hw-2',
-                 'hw-3',
-                 'hw-4',
-                 'hw-5',
-                 'hw-6']
-    
     for homework in homeworks:
         Homework(homework,
                  random.choice(Room.rooms),"A homework. It's not done.")
-
-    students = ['Frankie Freshman',
-                'Joe Junior',
-                'Sophie Sophomore',
-                'Cedric Senior']
 
     for student in students:
         NPC(student,
@@ -157,15 +147,21 @@ def create_world ():
             random.randint(1,5),
             random.randint(1,5))
 
-    trolls = ['Polyphemus',
-              'Gollum']
-
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
             'A troll!',
             random.randint(1,3),
             random.randint(1,3))
+
+    for i in range(random.randint(2,4)):
+        BadNinja(random.choice(BadNinjaR.names), random.choice(Room.rooms), random.choice(BadNinjaR.messages) ,random.randint(1,5),random.randint(1,5))
+
+    for i in range(random.randint(2,4)):
+        Butterfly(random.choice(ButterflyR.names), random.choice(Room.rooms), random.choice(ButterflyR.messages))
+
+    for i in range(random.randint(2,4)):
+        TrollHunter(random.choice(TrollHunterR.names), random.choice(Room.rooms), random.choice(TrollHunterR.messages) ,random.randint(1,3),random.randint(1,8))
 
 def print_tick_action (t):
     Player.me.location().report('The clock ticks '+str(t))
