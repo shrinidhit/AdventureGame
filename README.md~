@@ -1,17 +1,17 @@
 AdventureGame
 =============
 
-a) Shrinidhi Thirumalai & Haley Pelletier
+Shrinidhi Thirumalai & Haley Pelletier
 
 
 
-b) Type "help" at any time for a list of verbs and what they do!
+Type "help" at any time for a list of verbs and what they do!
 
-c) We thought the assignment was really fun and a reasonable amount of work. It made us want to make our own adventure games from scratch.  :)
+We thought the assignment was really fun and a reasonable amount of work. It made us want to make our own adventure games from scratch.  :)
 
 
 
-d) For Part 3, we implemented the following extensions:
+For Part 3, we implemented the following extensions:
 
 	- Ability to talk to NPCs. You can choose one of 4 phrases to say to an NPC, and they will respond appropriately based on their "personality".  See responses.py and the talk() method in verbs.py for more info.
 
