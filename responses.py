@@ -1,4 +1,8 @@
 import random
+from room import *
+from person import *
+from player import *
+
 
 #Responses Class. Has three major personalites, sweet, grumpy, and sassy. Each of those have a helps, gossip, insult, and compliment
 #list of responses when initialized
@@ -43,11 +47,12 @@ class PlayerR(object):
 		self.compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 
 #Object Specifics:
+
 class MobileThingR(Responses.Sweet):
 	taken = ['Aww I liked ', 'Sniffle. You took my ', 'Whatevs, I guess I can deal without my ', 'Good riddance -I don''t need my ', 'You wanna go bro? I''ll fight for my ']
 	take = ['hehe :)', 'Great, another thing to carry', 'Heavy...this better be useful', 'YAY', '...fantastic?']
 	drop = ['aww :(', 'Adios Amigo', 'So Long, Farewell', 'Adieu', 'Good bye, my love']
-	give = ['Make good use of it. Or you WILL be sorry', 'Good Riddance', 'Love You!', 'Let''s be friends']
+	give = ['Make good use of it. Or you WILL be sorry', 'Good Riddance', 'Love You!', "Let's be friends"]
 
 class BadNinjaR(Responses.Sassy):
 	names = Responses.Sassy.names
@@ -77,9 +82,9 @@ class ButterflyR(Responses.Sweet):
 
 class TrollHunterR(Responses.Grumpy):
     battle_phrases = ["AHA! I've got you now, troll!", "Taste my fury, you hellish beast!", "Die, fiend, DIE!"]
-    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me."]
+    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me!"]
 
 class ComputerR(Responses.Sweet):
 	names = Responses.Sweet.names
-	names.extend(['R2D2', 'R2D2'])
+	names.extend(['R2D2', 'C3P0'])
 	messages = ['So very handy. Try it!', 'Knows too much...suspiciously not human', 'Clink. Clink. Clack', 'Kind of adorable. A little monotoned and clinky but hey.']

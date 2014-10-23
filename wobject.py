@@ -30,3 +30,6 @@ class WObject (object):
 
     def is_course (self):
         return False
+
+    def is_sleeproom (self):
+        return False

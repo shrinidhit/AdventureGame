@@ -21,6 +21,10 @@ class Player (Person):
         self._credits = 0
         self._courses = []
         self._personality = PlayerR()
+        self._health = 50
+        self._max_health = 50
+        self.clock.add_to_register(self.monitor_health, 20)
+        self.clock.add_to_register(self.get_tired,1)
 
 #Functions:
     def credits(self):
@@ -28,6 +32,9 @@ class Player (Person):
 
     def courses(self):
         return self._courses
+
+    def health(self):
+        return self._health
 
     def thing_named (self,name):
         """Grab any kind of thing from player's location, given its name. The thing may be in the possession of
@@ -113,3 +120,12 @@ class Player (Person):
             target.talk(response)
         else:
             self.location().report("You can only talk to people. Sorry, this world isn't magical.")
+
+    def get_tired(self, time):
+        self._health -= 1
+
+    def monitor_health(self, time):        
+        if self.health() <= 25:
+            self.say("Gosh, I'm feeling pretty worn out. I should probably take a nap...")
+        elif self.health() <= 10:
+            self.say("I'm EXHAUSTED! I really should go to sleep...")

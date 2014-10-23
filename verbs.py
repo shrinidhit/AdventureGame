@@ -105,4 +105,41 @@ class Talk (Verb):
         Player.me.converse(obj1)
         return SAME_ROUND
 
+class Sleep (Verb):
+    def action0 (self):
+        if Player.me.location().is_sleeproom():
+            if Player.me.health() >= 18:
+                Player.me.say("I got 10 hours of sleep... but that won't stop me from taking a nap!")
+            elif Player.me.health >= 12:
+                Player.me.say("I'm getting pretty tired... better take a nap.")
+            elif Player.me.health >= 6:
+                Player.me.say("Wow, I'm really sleepy. Time to go to bed!")
+            else:
+                Player.me.say("FINALLY! I HAVEN'T SLEPT IN DAYS!")
+            print Player.me.name() + " sleeps for " + str(20-Player.me.health()) + " hours before finally waking up."
+
+            Player.me.reset_health()
+            return NEXT_ROUND
+        else:
+            Player.me.say("I can't sleep here, there's no bed!")
+
+class Help (Verb):
+    def action0 (self):
+        print "quit ==> Ends the game."
+        print "wait ==> Skips a turn."
+        print "look ==> The player looks around, or looks at a specified item or person."
+        print "take ==> The player takes the specified item, if it can be taken."
+        print "drop ==> The player drops the specified item, if it is currently being held."
+        print "give ==> The player gives the specified item to the specified person, if the item is currently being held."
+        print "use ==> The player uses the specified item, if it is in the same room as the player or it is being held. "
+        print "talk ==> The player talks to the specified person."
+        print "sleep ==> The player goes to sleep, if they are in a sleeping area."
+        print "north ==> The player moves north."
+        print "south ==> The player moves south."
+        print "east ==> The player moves east."
+        print "west ==> The player moves west."
+        print "up ==> The player moves up a level."
+        print "down ==> The player moves down a level."
+
+
         
