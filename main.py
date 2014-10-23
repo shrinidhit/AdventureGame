@@ -1,3 +1,11 @@
+#Shrinidhi Thirumalai and Haley Pelletier
+#Game Programming 2014
+#Adventure Based Text Game
+
+#Title: OlinLand
+#Description: You are an Oliner inside Olin's very quirky campus. Find a way to learn as much as you can,
+#and survive a semester. And of course, socialize with others to explore the quirky and unique culture. 
+
 #Imports:
 import random
 from room import *
@@ -13,11 +21,13 @@ from badninja import *
 from butterfly import *
 from trollhunter import *
 from course import *
+from sleeproom import *
 from responses import *
 from initials import *
-from sleeproom import *
+
 
 #Global Variables
+    #defines directions
 REVERSE = {
     'north' : 'south',
     'east' : 'west',
@@ -26,8 +36,10 @@ REVERSE = {
     'up' : 'down',
     'down' : 'up'
 }
+    #defines rounds
 SAME_ROUND = 1
 NEXT_ROUND = 2 
+    #Maps verbs to corresponding functions
 VERBS = {
     'quit' : Quit(),
     'look' : Look(),
@@ -59,7 +71,10 @@ def biconnect (fr,dir,to):
     connect(fr,dir,to)
     connect(to,REVERSE[dir],fr)
 
+#Creating World
 def static_world():
+    """Non-Random Necessities in the world that must be created every time"""
+    #Craetes Rooms
     mh353 = Room("Riccardo's Office",'Where Riccardo works.')
     mh3rd = Room('Milas Hall Third Floor','3rd Floor of Milas Hall')
     mh2nd = Room('Milas Hall Second Floor','2nd Floor of Milas Hall')
@@ -92,6 +107,7 @@ def static_world():
     eh423 = SleepRoom('East Hall Room 423','What a comfy room. Seems great for napping.')
     babson = Room('Babson College','You see Babbies, literally everwhere. A small, faint voice whispers in the distance... ~busssinesssss~')
 
+    #List of Room Connections
     Connections = [[mh353, 'east',  mh3rd],
     [mh3rd, 'down',  mh2nd],
     [mh2nd, 'down',  mh1st],
@@ -123,86 +139,115 @@ def static_world():
     [ac3rd, 'up', ac4th],
     [ac4th, 'north', ac429]]
 
+    #Connects all rooms
     for con in Connections:
         biconnect(con[0], con[1], con[2])
 
+    #Player Creation: Must be first thing that's created
     Player('Blubbering-Fool', oval, "That's you!")
 
     #Needed Objects:
-    Radar('handy radar',mh353,'So very handy. Try it!') 
+        #Radar
+    Radar('handy radar',mh353,'So very handy. Try it!')
+        #Random Things
     Thing('blackboard', ac113,'You can write on it.')
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
     Thing('rock-band',wh4,'Jammin.')
     Thing('knowledge',ac113,'The ultimate goal. Of life. nudge, nudge, hint')
-
+        #Course
     Course('DesNat',ac213,4,"The smell of molten Delrin fills the air. Taking in a deep breath, you can feel the carcinogens gnawing away at your life's very essence. This, truly, is what it means to be an engineer.")
     Course('ISIM',ac429,4,"Resistors are strewn across every visible surface. If your personal hygiene were as bad as your circuit hygiene, you'd probably have contracted the Bubonic Plague by now.")
     Course('AHS',ac326,4,"What is this shit? This isn't engineering...")
     Course('ModSim',ac213,4,"There are so many sharks, rays, and scallops that you can't see anything else. The world has been consumed by marine life.")
-
+        #Mobile Things
     MobileThing('study-abroad-pamphlet',cc1st,"Hmm... maybe I'll go to Europe next semester...")
     MobileThing('cs-book', oval,'Learning that CS ;).')
     MobileThing('math-book', oval,'Learning them maths.')
     MobileThing('ruler',wh1,'To measure ALL the things.')
     MobileThing('lunch',cc1st,'Yummy in your tummy.')
-    
+        #Computers
     Computer('hal-9000', ac113,'Knows too much...suspiciously not human')
     Computer('johnny-5', eh1,'Kind of adorable. A little monotoned and clinky but hey.')
+        #Professor
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5), random.randint(1,5))
 
 #Creating World
 def create_world ():
-    static_world()    
+    """Creates Initial World with exits and connections"""
+    static_world() #Non-random Necessities
+
     #Random Choosings:
+        #Homeworks
     for homework in homeworks:
         Homework(homework,
                  random.choice(Room.rooms),"A homework. It's not done.")
-
+        #Students
     for student in students:
         NPC(student,
             random.choice(Room.rooms),
             'A student.',
             random.randint(1,5),
             random.randint(1,5))
-
+        #Trolls
     for troll in trolls:
       Troll(troll,
             random.choice(Room.rooms),
             'A troll!',
             random.randint(1,3),
             random.randint(1,3))
-
+        #Bad Ninjas
     for i in range(random.randint(2,4)):
         BadNinja(random.choice(BadNinjaR.names), random.choice(Room.rooms), random.choice(BadNinjaR.messages) ,random.randint(1,5),random.randint(1,5))
-
+        #Butterflies
     for i in range(random.randint(2,4)):
         Butterfly(random.choice(ButterflyR.names), random.choice(Room.rooms), random.choice(ButterflyR.messages))
-
+        #Troll Hunters
     for i in range(random.randint(2,4)):
         TrollHunter(random.choice(TrollHunterR.names), random.choice(Room.rooms), random.choice(TrollHunterR.messages) ,random.randint(1,3),random.randint(1,8))
 
 def print_tick_action (t):
-    Player.me.location().report('The clock ticks '+str(t))
+    """Prints Time to Player"""
+    #Special Messages:
+    if 8 >= (t % 12) > 6:
+        message = 'It''s getting dark'
+    elif 11 >= (t % 12) > 8:
+        message = 'Sleepy Time! Go to sleep.'
+    else:
+        message = ''
+    #Report Time + Message:
+    Player.me.location().report('The clock ticks '+str(t) + '. ' + message)
 
 def read_player_input ():
+    """Get's player's input and perfoms the action"""
     while True:
         response = raw_input('\nWhat is thy bidding? ')
         if len(response)>0:
             return response.split()
 
+def start_sequence():
+    """Starting Display Lines with Instructions"""
+    print '------------------------------------------------------------'
+    print 'Olinland, version 1.4 (Fall 2014)'
+    print '------------------------------------------------------------\n'
+    print 'You are a new first year inside Olin''s VERY quirky campus.' 
+    print 'Find a way to learn as much as you can,and survive a semester ;)' 
+    print 'And of course, socialize with others to explore the quirky and unique culture.\n'
+    print 'type "help" to see a list of possible commands'
 
 #Main Game Loop: 
 def main ():
-    
-    print 'Olinland, version 1.4 (Fall 2014)\n'
-
+    """Main Game Loop"""
+    #Display's start sequence/instructions
+    start_sequence()
     # Create the world
     create_world()
-    
+    #Displays Items Around
     Player.me.look_around()
+    #Performs Items in Register
     Player.clock.add_to_register(print_tick_action, 3)
 
+    #Loops to get player input
     while True:
         response = read_player_input ()
         print
@@ -214,14 +259,6 @@ def main ():
         else:
             print 'What??'
             
-#Testing Loop:     
-def test():
-    create_world()
-    while True:
-        Player.me.peek_around()
-
-
 #Automatic Run:
 if __name__ == '__main__':
-    # test()
     main()

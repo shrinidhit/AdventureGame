@@ -1,12 +1,12 @@
+#Imports
 import random
 from room import *
 from person import *
 from player import *
 
+#Statics = names, messages
 
-#Responses Class. Has three major personalites, sweet, grumpy, and sassy. Each of those have a helps, gossip, insult, and compliment
-#list of responses when initialized
-
+#General Responses Class. Three Major Personality parents: Sweet, Grumpy, and Sassy
 class Responses(object):
 	class Sweet(object):
 		names = ['nemo', 'dori', 'sneezy']
@@ -37,6 +37,7 @@ class Responses(object):
 
 	personalities = [Sweet, Sassy, Grumpy]
 
+
 #Player Specific Sayings
 class PlayerR(object):
 	def __init__(self):
@@ -46,14 +47,16 @@ class PlayerR(object):
 		self.insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
 		self.compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
 
-#Object Specifics:
 
+#Object Specifics:
 class MobileThingR(Responses.Sweet):
 	taken = ['Aww I liked ', 'Sniffle. You took my ', 'Whatevs, I guess I can deal without my ', 'Good riddance -I don''t need my ', 'You wanna go bro? I''ll fight for my ']
 	take = ['hehe :)', 'Great, another thing to carry', 'Heavy...this better be useful', 'YAY', '...fantastic?']
 	drop = ['aww :(', 'Adios Amigo', 'So Long, Farewell', 'Adieu', 'Good bye, my love']
 	give = ['Make good use of it. Or you WILL be sorry', 'Good Riddance', 'Love You!', "Let's be friends"]
 
+
+#NPC Specifics:
 class BadNinjaR(Responses.Sassy):
 	names = Responses.Sassy.names
 	names.extend(['pinkpanda', 'swiper', 'wasabi'])
