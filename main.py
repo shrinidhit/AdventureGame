@@ -96,9 +96,9 @@ def static_world():
     [eh3, 'up', eh4],
     [oval, 'north',  babson],
     [oval, 'west',  ac1st],
-    [ac1st, 'north',  ac113]
+    [ac1st, 'north',  ac113],
     [ac1st, 'up', ac2nd],
-    [ac2nd, 'north,' ac213],
+    [ac2nd, 'north', ac213],
     [ac2nd, 'up', ac3rd],
     [ac3rd, 'north', ac326],
     [ac3rd, 'up', ac4th],
@@ -115,6 +115,7 @@ def static_world():
     Thing('lovely-trees', oval,'So very pretty.')
     Thing('n64',wh3,'Such games.')
     Thing('rock-band',wh4,'Jammin.')
+    Thing('knowledge',ac113,'The ultimate goal. Of life. nudge, nudge, hint')
 
     Course('DesNat',ac213,4,"The smell of molten Delrin fills the air. Taking in a deep breath, you can feel the carcinogens gnawing away at your life's very essence. This, truly, is what it means to be an engineer.")
     Course('ISIM',ac429,4,"Resistors are strewn across every visible surface. If your personal hygiene were as bad as your circuit hygiene, you'd probably have contracted the Bubonic Plague by now.")
@@ -126,8 +127,7 @@ def static_world():
     MobileThing('math-book', oval,'Learning them maths.')
     MobileThing('ruler',wh1,'To measure ALL the things.')
     MobileThing('lunch',cc1st,'Yummy in your tummy.')
-    MobileThing('knowledge',ac113,'The ultimate goal. Of life. nudge, nudge, hint')
-
+    
     Computer('hal-9000', ac113,'Knows too much...suspiciously not human')
     Computer('johnny-5', eh1,'Kind of adorable. A little monotoned and clinky but hey.')
     Professor('Riccardo',mh353,"He's the best!",random.randint(1,5), random.randint(1,5))

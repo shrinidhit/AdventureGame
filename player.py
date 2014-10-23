@@ -19,10 +19,14 @@ class Player (Person):
         Person.__init__(self,name,loc,desc)
         Player.me = self
         self._credits = 0
+        self._courses = []
 
 #Functions:
     def credits(self):
         return self._credits
+
+    def courses(self):
+        return self._courses
 
     def thing_named (self,name):
         """Grab any kind of thing from player's location, given its name. The thing may be in the possession of
@@ -47,6 +51,7 @@ class Player (Person):
         people = self.people_around()
         all_stuff = self.stuff_around()
         backpack = self.backpack()
+        courses = self.courses()
 
         print '------------------------------------------------------------'
         print 'You are in', loc.name()
@@ -56,22 +61,31 @@ class Player (Person):
             print 'You see:', names(all_stuff)
         else: 
             print 'The room is empty'
-            
-        if backpack:
-            print 'You are holding:',names(backpack)
-        else:
-            print "You aren't holding anything."
 
         if people:
             print 'You see:', names(people)
         else:
             print 'You see no one around'
+            
+        if backpack:
+            print 'You are holding:', names(backpack)
+        else:
+            print "You aren't holding anything."
+
+        if courses:
+            print 'Classes taken: ',names(courses)
 
         if exits:
             print 'Exits:', ', '.join([x for x in exits])
         else:
             print 'There are no exits'
 
+    #Override Person's method
+    def add_thing (self,t):
+        if t.is_course():
+            self._courses.append(t)
+        else:
+            self._backpack.append(t)
 
     def die (self):
         self.say('I am slain!')
@@ -97,4 +111,4 @@ class Player (Person):
             print response
             target.talk(response)
         else:
-            self.location.report('You can only talk to people. Sorry, this world isn''t magical')
+            self.location().report("You can only talk to people. Sorry, this world isn't magical.")

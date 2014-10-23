@@ -7,6 +7,9 @@ class Course(MobileThing):
         MobileThing.__init__(self,name,loc,desc)
         self._credits = credits
 
+    def is_course(self):
+        return True
+
     def credits(self):
     	return self._credits
 

@@ -27,3 +27,6 @@ class WObject (object):
         
     def is_troll (self):
         return False
+
+    def is_course (self):
+        return False

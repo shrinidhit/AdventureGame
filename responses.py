@@ -8,9 +8,10 @@ class Responses(object):
 		messages = ['Your friend', 'Pretty darn cute', 'SUPER hyper...ALL the time', 'Made of rainbows and unicorns...literally']
 
 		helps = ['Radar is your best friend', 'Knowledge is Power', 'Find a robotic friend']
-		gossip = ['IDK too much about anything', 'Sowwy, I don''t gossip', 'DUDE, that''t not cool']
+		gossip = ['IDK too much about anything', 'Sowwy, I don''t gossip', 'DUDE, that''s not cool']
 		insult = ['...', 'well then.', 'wow...guess I won''t be helping you']
 		compliment = ['HI FRIEND!', 'I like you :)', 'We can get married?']
+
 	class Sassy(object):
 		names = ['dancer','mileyCyrus', 'beyonce']
 		messages = ['Oh so cute...but DANGEROUS', 'Don''t get on their bad side...', 'One SASSY diva', 'will WRECK you']
@@ -19,6 +20,7 @@ class Responses(object):
 		gossip = ['Yeaaa, I''m not too fond of them', 'I really like them']
 		insult = ['DAMN. Someone''s got attitude.', 'EXCUSE me, you''re no match for me', 'Pshh...loser']
 		compliment = ['Sucking up to me, huh?', 'Yea, you can''t bribe me with fancy talk. Seeya']
+
 	class Grumpy(object):
 		names = ['grumpy', 'dopey', 'rudolph', 'cookiemonster', 'Thor']
 		messages = ['A meathead on a mission', 'Your grouchy gramps', 'Woke up on the wrong side of the bed today...']
@@ -35,6 +37,7 @@ class PlayerR(object):
 	gossip = ['Dude, isn''t %s so nice?', 'WHAT is up with %s? SO messed up...'] #%random.choice([person for room in Room.rooms for person in room.contents() if person.is_person])]
 	insult = ['You wanna go, bro?', 'Ew...you stink. Can you leave?', 'JUST saying...you gotta upgrade your style']
 	compliment = ['I really like you :)', 'Wanna be friends?', 'Hey, you - up to be my partner in crime?']
+
 class MobileThingR(Responses.Sweet):
 	taken = ['Aww I liked ', 'Sniffle. You took my ', 'Whatevs, I guess I can deal without my ', 'Good riddance -I don''t need my ', 'You wanna go bro? I''ll fight for my ']
 	take = ['hehe :)', 'Great, another thing to carry', 'Heavy...this better be useful', 'YAY', '...fantastic?']
@@ -55,8 +58,9 @@ class BadNinjaR(Responses.Sassy):
 	'Gonna casually look at this. Oopsie, I accidentally lit it on fire',]
 
 	names = Responses.Sassy.names
+	messages = Responses.Sassy.messages
 	names.extend(['pinkpanda', 'swiper', 'wasabi'])
-	names.extend(['Intense cooking gave this kid mad ninja skills...beware'])
+	messages.extend(['Intense cooking gave this kid mad ninja skills...beware'])
 
 class ButterflyR(Responses.Sweet):
 	names = Responses.Sweet.names
@@ -66,13 +70,9 @@ class ButterflyR(Responses.Sweet):
 
 class TrollHunterR(Responses.Grumpy):
     battle_phrases = ["AHA! I've got you now, troll!", "Taste my fury, you hellish beast!", "Die, fiend, DIE!"]
-    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me--"]
+    search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me."]
 
 class ComputerR(Responses.Sweet):
 	names = Responses.Sweet.names
 	names.extend(['R2D2', 'R2D2'])
 	messages = ['So very handy. Try it!', 'Knows too much...suspiciously not human', 'Clink. Clink. Clack', 'Kind of adorable. A little monotoned and clinky but hey.']
-
-
-
-
