@@ -116,7 +116,7 @@ class Sleep (Verb):
                 Player.me.say("Wow, I'm really sleepy. Time to go to bed!")
             else:
                 Player.me.say("FINALLY! I HAVEN'T SLEPT IN DAYS!")
-            print Player.me.name() + " sleeps for " + str(20-Player.me.health()) + " hours before finally waking up."
+            print Player.me.name() + " sleeps for " + str(50-Player.me.health()) + " hours before finally waking up."
 
             Player.me.reset_health()
             return NEXT_ROUND

@@ -18,13 +18,14 @@ class TrollHunter(NPC):
         search_phrases = ["I'm coming for you, troll!", "I can smell your fear from a mile away!", "Run all you want, but you cannot hide from me--"+self.name()+"--SLAYER OF EVIL!"]
               
         attacked = False
-        for person in self.people_around():
-            if person.is_troll():                
-                self.say(random.choice(battle_phrases))
-                person.suffer(2)
-                attacked = True
+        if not self.is_in_limbo():
+            for person in self.people_around():
+                if person.is_troll():                
+                    self.say(random.choice(battle_phrases))
+                    person.suffer(2)
+                    attacked = True
+                    break
                 break
-            break
-        if attacked == False:
-            self.say(random.choice(search_phrases))
-            self.move_and_take_stuff(time)
+            if attacked == False:
+                self.say(random.choice(search_phrases))
+                self.move_and_take_stuff(time)
